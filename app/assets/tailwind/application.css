@@ -4,7 +4,10 @@
 @import "./themes/light.css";
 @import "./themes/dark.css";
 @import "./components/event_post";
+@import "./components/button.css";
 
 body {
   background-color: var(--color-base-300);
 }
+
+

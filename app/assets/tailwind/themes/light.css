@@ -9,8 +9,10 @@
     --color-base-content: oklch(21% 0.006 285.885);
     
     /* Colors */
-    --color-primary: oklch(52% 0.105 223.128);
+    --color-primary:  var(--color-turquoise-500);
     --color-primary-content: oklch(98% 0.019 200.873);
+    --color-primary-hover: var(--color-turquoise-400);
+    --color-primary-active: var(--color-turquoise-700);
 
     --color-secondary: oklch(52% 0.223 3.958);
     --color-secondary-content: oklch(97% 0.014 343.198);
@@ -36,6 +38,7 @@
     --color-error-content: oklch(27% 0.105 12.094);
 
     /* Border Radius */
+    --radius-button: 0.25rem;
     --radius-selector: 0.25rem;
     --radius-field: 0.25rem;
     --radius-box: 0.5rem;

@@ -1,0 +1,19 @@
+/* Base button style */
+.btn {
+  @apply px-5 py-2.5 text-sm font-medium text-center rounded-[var(--radius-button)] transition-all disabled:cursor-not-allowed;
+}
+
+/* Primary filled */
+.btn-primary {
+  @apply border border-[var(--color-primary)] bg-[var(--color-primary)] text-white shadow-sm hover:bg-[var(--color-primary-hover)] hover:border-[var(--color-primary-hover)] focus:ring focus:ring-[var(--color-turquoise-200)] disabled:border-[var(--color-turquoise-300)] disabled:bg-[var(--color-turquoise-300)];
+}
+
+/* Secondary (outline) */
+.btn-secondary {
+  @apply border border-[var(--color-primary)] text-gray-700 shadow-sm hover:bg-[var(--color-primary-hover)] focus:ring focus:ring-gray-100 disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-400;
+}
+
+/* Ghost (transparent) */
+.btn-ghost {
+  @apply border border-transparent bg-transparent text-gray-700 shadow-none hover:bg-gray-100 disabled:bg-transparent disabled:text-gray-400;
+}
