@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-controller="theme">
+<html lang="en" data-controller="theme" data-theme="light">
   <head>
     <title><%= content_for(:title) || "Mp Event App" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -23,7 +23,7 @@
   </head>
 
   <body>
-    <header class="fixed top-0 inset-x-0 z-50 bg-amber-200 border-b shadow-sm">
+    <header class="fixed top-0 inset-x-0 z-50 bg-base-100 border-b shadow-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <!-- Left section (e.g., logo or site name) -->
         <div class="text-lg font-semibold text-gray-900">
@@ -36,7 +36,7 @@
           <!-- Add more links as needed -->
         </nav>
         
-        <button data-controller="theme" data-action="theme#toggle" class="px-3 py-1 rounded bg-[var(--color-primary)] text-white text-sm">
+        <button data-controller="theme" data-action="click->theme#toggle" class="px-3 py-1 rounded bg-[var(--color-primary)] text-white text-sm">
           Toggle Theme
         </button>
       </div>

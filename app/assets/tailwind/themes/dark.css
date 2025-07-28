@@ -1,0 +1,53 @@
+
+[data-theme="dark"] {
+    /* Colors */
+    --color-base-100: oklch(10% 0.005 285.823);     /* dark background base */
+    --color-base-200: oklch(15% 0.008 285);         /* slightly lighter dark base */
+    --color-base-300: oklch(20% 0.01 285);          /* lightest dark base */
+
+    --color-base-content: oklch(95% 0.02 285.885);  /* light text on dark background */
+
+    --color-primary: oklch(60% 0.15 220);            /* primary color brightened */
+    --color-primary-content: oklch(10% 0.01 200);    /* dark text for primary backgrounds */
+
+    --color-secondary: oklch(55% 0.25 5);            /* secondary color adjusted */
+    --color-secondary-content: oklch(95% 0.02 350);  /* light content */
+
+    --color-accent: oklch(75% 0.1 180);               /* accent color toned down */
+    --color-accent-content: oklch(15% 0.08 190);      /* accent text light/dark */
+
+    --color-neutral: oklch(80% 0 290);                /* neutral toned for dark bg */
+    --color-neutral-content: oklch(20% 0.01 280);     /* neutral content contrasting */
+
+    --color-info: oklch(60% 0.13 230);                /* info color slightly muted */
+    --color-info-content: oklch(85% 0.015 245);       /* info content light */
+
+    --color-success: oklch(65% 0.15 160);             /* success color muted */
+    --color-success-content: oklch(20% 0.06 170);     /* success content dark */
+
+    --color-warning: oklch(70% 0.18 80);              /* warning color darker */
+    --color-warning-content: oklch(15% 0.07 60);      /* warning content dark */
+
+    --color-error: oklch(65% 0.2 10);                 /* error color toned down */
+    --color-error-content: oklch(18% 0.11 12);        /* error content dark */
+  
+    /* Border Radius */
+    --radius-selector: 0.25rem;
+    --radius-field: 0.25rem;
+    --radius-box: 0.5rem;
+
+    /* Sizes (same as light theme) */
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+
+    /* Border / Depth / Noise */
+    --border: 1px;
+    --depth: 1;
+    --noise: 0;
+
+    /* Metadata */
+    --theme-name: "dark";
+    --theme-default: false;
+    --theme-prefers-dark: true;
+    --color-scheme: "dark";
+  }

@@ -1,23 +1,10 @@
 @import "tailwindcss";
 
-@tailwind utilities;
+@import "./themes/colors.css";
+@import "./themes/light.css";
+@import "./themes/dark.css";
+@import "./components/event_post";
 
-/* Theming */
-@layer base {
-  :root {
-    --color-bg: var(--color-gray-200);
-    --color-text: #1f2937;
-    --color-primary: #2563eb;
-  }
-
-  [data-theme="dark"] {
-    --color-bg: #0f172a;
-    --color-text: #f1f5f9;
-    --color-primary: #3b82f6;
-  }
-
-  body {
-    background-color: var(--color-bg);
-    color: var(--color-text);
-  }
+body {
+  background-color: var(--color-base-300);
 }

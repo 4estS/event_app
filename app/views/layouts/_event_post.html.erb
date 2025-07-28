@@ -1,56 +1,45 @@
-<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+<div class="card-event">
   <!-- Image -->
-  <div class="relative">
-    <img src="/path/to/your/image.jpg" alt="Event image" class="w-full h-48 object-cover">
-    <span class="absolute bottom-2 right-2 bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">
+  <div class="card-event__image-wrapper">
+    <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Event image" class="card-event__image">
+    <span class="card-event__category">
       Arts & Entertainment
     </span>
   </div>
 
   <!-- Content -->
-  <div class="p-4 space-y-4">
-    <p class="text-gray-800 text-sm">
+  <div class="card-event__content">
+    <p class="card-event__description">
       Join us this Saturday for Paws & Play, a fun-filled event supporting local animal rescue! Enjoy games, food, and meet adoptable pets.
     </p>
 
     <!-- Event details -->
-    <div class="flex items-center text-gray-600 text-xs space-x-4">
-      <div class="flex items-center gap-1">
-        <span>📅</span>
-        <span>01-20-2025</span>
+    <div class="card-event__details">
+      <div class="card-event__detail-item">
+        <span>📅</span><span>01-20-2025</span>
       </div>
-      <div class="flex items-center gap-1">
-        <span>⏰</span>
-        <span>09:00 PM</span>
+      <div class="card-event__detail-item">
+        <span>⏰</span><span>09:00 PM</span>
       </div>
-      <div class="flex items-center gap-1">
-        <span>📍</span>
-        <span>The Something Center</span>
+      <div class="card-event__detail-item">
+        <span>📍</span><span>The Something Center</span>
       </div>
     </div>
 
     <!-- Tags -->
-    <div class="flex flex-wrap gap-2 text-xs text-blue-700 font-medium">
-      <span class="bg-blue-50 px-2 py-1 rounded-full">#community</span>
-      <span class="bg-blue-50 px-2 py-1 rounded-full">#volunteer</span>
-      <span class="bg-blue-50 px-2 py-1 rounded-full">#animalrescue</span>
-      <span class="bg-blue-50 px-2 py-1 rounded-full">#animalwelfare</span>
+    <div class="card-event__tags">
+      <span class="card-event__tag">#community</span>
+      <span class="card-event__tag">#volunteer</span>
+      <span class="card-event__tag">#animalrescue</span>
+      <span class="card-event__tag">#animalwelfare</span>
     </div>
 
     <!-- Actions -->
-    <div class="border-t pt-4 flex items-center justify-between text-sm text-gray-600">
-      <button class="flex items-center gap-1 hover:text-black">
-        🤍 Interested
-      </button>
-      <button class="flex items-center gap-1 hover:text-black">
-        🚗 Going
-      </button>
-      <button class="flex items-center gap-1 hover:text-black">
-        🔗 Share
-      </button>
-      <button class="flex items-center gap-1 hover:text-black">
-        💾 Save
-      </button>
+    <div class="card-event__actions">
+      <button class="card-event__action-button">🤍 Interested</button>
+      <button class="card-event__action-button">🚗 Going</button>
+      <button class="card-event__action-button">🔗 Share</button>
+      <button class="card-event__action-button">💾 Save</button>
     </div>
   </div>
 </div>

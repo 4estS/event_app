@@ -1,0 +1,241 @@
+:root {
+  /* Pomegranate */
+  --color-pomegranate-100: oklch(0.95 0.02 22);
+  --color-pomegranate-200: oklch(0.90 0.03 23);
+  --color-pomegranate-300: oklch(0.80 0.06 26);
+  --color-pomegranate-400: oklch(0.71 0.10 26);
+  --color-pomegranate-500: oklch(0.62 0.14 28);
+  --color-pomegranate-600: oklch(0.54 0.17 30);
+  --color-pomegranate-700: oklch(0.50 0.16 30);
+  --color-pomegranate-800: oklch(0.45 0.14 29);
+  --color-pomegranate-900: oklch(0.40 0.12 29);
+  --color-pomegranate-950: oklch(0.34 0.10 30);
+
+  /* Alizarin */
+  --color-alizarin-100: oklch(0.96 0.02 22);
+  --color-alizarin-200: oklch(0.92 0.03 24);
+  --color-alizarin-300: oklch(0.83 0.07 25);
+  --color-alizarin-400: oklch(0.76 0.11 27);
+  --color-alizarin-500: oklch(0.69 0.16 28);
+  --color-alizarin-600: oklch(0.63 0.19 29);
+  --color-alizarin-700: oklch(0.57 0.17 29);
+  --color-alizarin-800: oklch(0.52 0.16 29);
+  --color-alizarin-900: oklch(0.46 0.14 30);
+  --color-alizarin-950: oklch(0.40 0.11 29);
+
+  /* Amethyst */
+  --color-amethyst-100: oklch(0.96 0.02 316);
+  --color-amethyst-200: oklch(0.92 0.03 317);
+  --color-amethyst-300: oklch(0.83 0.06 316);
+  --color-amethyst-400: oklch(0.74 0.09 316);
+  --color-amethyst-500: oklch(0.66 0.12 316);
+  --color-amethyst-600: oklch(0.58 0.15 315);
+  --color-amethyst-700: oklch(0.53 0.14 315);
+  --color-amethyst-800: oklch(0.48 0.12 316);
+  --color-amethyst-900: oklch(0.42 0.11 315);
+  --color-amethyst-950: oklch(0.37 0.09 316);
+
+  /* Wisteria */
+  --color-wisteria-100: oklch(0.96 0.02 316);
+  --color-wisteria-200: oklch(0.91 0.03 315);
+  --color-wisteria-300: oklch(0.81 0.07 316);
+  --color-wisteria-400: oklch(0.71 0.10 315);
+  --color-wisteria-500: oklch(0.62 0.14 316);
+  --color-wisteria-600: oklch(0.53 0.17 315);
+  --color-wisteria-700: oklch(0.48 0.15 315);
+  --color-wisteria-800: oklch(0.43 0.14 315);
+  --color-wisteria-900: oklch(0.39 0.12 315);
+  --color-wisteria-950: oklch(0.34 0.10 315);
+
+    /* Belize Hole */
+  --color-belize-hole-100: oklch(0.96 0.01 240);
+  --color-belize-hole-200: oklch(0.91 0.02 234);
+  --color-belize-hole-300: oklch(0.83 0.05 237);
+  --color-belize-hole-400: oklch(0.74 0.07 238);
+  --color-belize-hole-500: oklch(0.66 0.10 240);
+  --color-belize-hole-600: oklch(0.58 0.12 242);
+  --color-belize-hole-700: oklch(0.53 0.11 242);
+  --color-belize-hole-800: oklch(0.47 0.10 242);
+  --color-belize-hole-900: oklch(0.42 0.08 241);
+  --color-belize-hole-950: oklch(0.37 0.07 240);
+
+  /* Peter River */
+  --color-peter-river-100: oklch(0.96 0.01 234);
+  --color-peter-river-200: oklch(0.93 0.03 238);
+  --color-peter-river-300: oklch(0.86 0.06 238);
+  --color-peter-river-400: oklch(0.78 0.08 238);
+  --color-peter-river-500: oklch(0.72 0.11 240);
+  --color-peter-river-600: oklch(0.65 0.13 243);
+  --color-peter-river-700: oklch(0.60 0.12 243);
+  --color-peter-river-800: oklch(0.54 0.11 242);
+  --color-peter-river-900: oklch(0.47 0.09 242);
+  --color-peter-river-950: oklch(0.41 0.08 242);
+
+  /* Turquoise */
+  --color-turquoise-100: oklch(0.97 0.02 184);
+  --color-turquoise-200: oklch(0.94 0.04 181);
+  --color-turquoise-300: oklch(0.87 0.07 181);
+  --color-turquoise-400: oklch(0.81 0.10 180);
+  --color-turquoise-500: oklch(0.76 0.12 178);
+  --color-turquoise-600: oklch(0.71 0.13 174);
+  --color-turquoise-700: oklch(0.65 0.12 174);
+  --color-turquoise-800: oklch(0.58 0.11 175);
+  --color-turquoise-900: oklch(0.51 0.09 175);
+  --color-turquoise-950: oklch(0.45 0.08 175);
+
+  /* Green Sea */
+  --color-green-sea-100: oklch(0.96 0.02 182);
+  --color-green-sea-200: oklch(0.92 0.03 184);
+  --color-green-sea-300: oklch(0.84 0.06 181);
+  --color-green-sea-400: oklch(0.77 0.08 180);
+  --color-green-sea-500: oklch(0.70 0.11 177);
+  --color-green-sea-600: oklch(0.63 0.12 175);
+  --color-green-sea-700: oklch(0.58 0.11 175);
+  --color-green-sea-800: oklch(0.52 0.09 174);
+  --color-green-sea-900: oklch(0.46 0.08 175);
+  --color-green-sea-950: oklch(0.40 0.07 175);
+
+   /* Nephritis */
+  --color-nephritis-100: oklch(0.96 0.02 161);
+  --color-nephritis-200: oklch(0.93 0.04 160);
+  --color-nephritis-300: oklch(0.86 0.07 158);
+  --color-nephritis-400: oklch(0.79 0.10 158);
+  --color-nephritis-500: oklch(0.72 0.14 156);
+  --color-nephritis-600: oklch(0.66 0.16 152);
+  --color-nephritis-700: oklch(0.60 0.15 152);
+  --color-nephritis-800: oklch(0.54 0.13 153);
+  --color-nephritis-900: oklch(0.48 0.11 153);
+  --color-nephritis-950: oklch(0.41 0.09 153);
+
+  /* Emerald */
+  --color-emerald-100: oklch(0.97 0.02 161);
+  --color-emerald-200: oklch(0.94 0.04 161);
+  --color-emerald-300: oklch(0.89 0.08 159);
+  --color-emerald-400: oklch(0.83 0.12 157);
+  --color-emerald-500: oklch(0.79 0.15 155);
+  --color-emerald-600: oklch(0.75 0.18 152);
+  --color-emerald-700: oklch(0.68 0.16 152);
+  --color-emerald-800: oklch(0.61 0.15 153);
+  --color-emerald-900: oklch(0.54 0.13 153);
+  --color-emerald-950: oklch(0.46 0.11 153);
+
+  /* Sunflower */
+  --color-sunflower-100: oklch(0.98 0.02 94);
+  --color-sunflower-200: oklch(0.96 0.05 96);
+  --color-sunflower-300: oklch(0.93 0.09 96);
+  --color-sunflower-400: oklch(0.90 0.13 96);
+  --color-sunflower-500: oklch(0.86 0.16 94);
+  --color-sunflower-600: oklch(0.84 0.17 92);
+  --color-sunflower-700: oklch(0.76 0.15 92);
+  --color-sunflower-800: oklch(0.68 0.14 92);
+  --color-sunflower-900: oklch(0.60 0.12 92);
+  --color-sunflower-950: oklch(0.52 0.10 93);
+
+  /* Orange */
+  --color-orange-100: oklch(0.97 0.02 79);
+  --color-orange-200: oklch(0.95 0.04 78);
+  --color-orange-300: oklch(0.90 0.08 79);
+  --color-orange-400: oklch(0.85 0.12 78);
+  --color-orange-500: oklch(0.80 0.15 75);
+  --color-orange-600: oklch(0.76 0.16 69);
+  --color-orange-700: oklch(0.69 0.15 69);
+  --color-orange-800: oklch(0.62 0.13 70);
+  --color-orange-900: oklch(0.55 0.12 70);
+  --color-orange-950: oklch(0.47 0.10 71);
+
+  /* Carrot */
+  --color-carrot-100: oklch(0.97 0.02 62);
+  --color-carrot-200: oklch(0.93 0.03 63);
+  --color-carrot-300: oklch(0.87 0.07 62);
+  --color-carrot-400: oklch(0.81 0.10 63);
+  --color-carrot-500: oklch(0.75 0.13 60);
+  --color-carrot-600: oklch(0.70 0.16 56);
+  --color-carrot-700: oklch(0.63 0.14 56);
+  --color-carrot-800: oklch(0.57 0.13 56);
+  --color-carrot-900: oklch(0.50 0.11 57);
+  --color-carrot-950: oklch(0.44 0.10 57);
+
+  /* Pumpkin */
+  --color-pumpkin-100: oklch(0.96 0.02 54);
+  --color-pumpkin-200: oklch(0.91 0.04 56);
+  --color-pumpkin-300: oklch(0.83 0.07 56);
+  --color-pumpkin-400: oklch(0.75 0.11 53);
+  --color-pumpkin-500: oklch(0.67 0.15 50);
+  --color-pumpkin-600: oklch(0.60 0.18 44);
+  --color-pumpkin-700: oklch(0.55 0.16 44);
+  --color-pumpkin-800: oklch(0.50 0.14 45);
+  --color-pumpkin-900: oklch(0.44 0.12 46);
+  --color-pumpkin-950: oklch(0.38 0.11 47);
+
+  /* Clouds */
+  --color-clouds-100: oklch(1.00 0.00 197);
+  --color-clouds-200: oklch(0.99 0.00 197);
+  --color-clouds-300: oklch(0.98 0.00 197);
+  --color-clouds-400: oklch(0.97 0.00 229);
+  --color-clouds-500: oklch(0.96 0.00 220);
+  --color-clouds-600: oklch(0.95 0.00 214);
+  --color-clouds-700: oklch(0.86 0.00 220);
+  --color-clouds-800: oklch(0.77 0.00 220);
+  --color-clouds-900: oklch(0.68 0.00 197);
+  --color-clouds-950: oklch(0.59 0.00 197);
+
+    /* Silver */
+  --color-silver-100: oklch(0.98 0.00 197);
+  --color-silver-200: oklch(0.96 0.00 248);
+  --color-silver-300: oklch(0.93 0.00 248);
+  --color-silver-400: oklch(0.89 0.01 229);
+  --color-silver-500: oklch(0.85 0.01 234);
+  --color-silver-600: oklch(0.81 0.01 237);
+  --color-silver-700: oklch(0.74 0.01 229);
+  --color-silver-800: oklch(0.66 0.01 240);
+  --color-silver-900: oklch(0.59 0.01 229);
+  --color-silver-950: oklch(0.50 0.00 237);
+
+  /* Concrete */
+  --color-concrete-100: oklch(0.97 0.00 197);
+  --color-concrete-200: oklch(0.93 0.00 197);
+  --color-concrete-300: oklch(0.86 0.01 197);
+  --color-concrete-400: oklch(0.78 0.01 206);
+  --color-concrete-500: oklch(0.71 0.01 204);
+  --color-concrete-600: oklch(0.63 0.02 202);
+  --color-concrete-700: oklch(0.57 0.01 203);
+  --color-concrete-800: oklch(0.52 0.01 205);
+  --color-concrete-900: oklch(0.46 0.01 197);
+  --color-concrete-950: oklch(0.40 0.01 197);
+
+  /* Neutral */
+  --color-neutral-100: oklch(0.96 0.00 286);
+  --color-neutral-200: oklch(0.89 0.00 286);
+  --color-neutral-300: oklch(0.82 0.00 286);
+  --color-neutral-400: oklch(0.75 0.01 286);
+  --color-neutral-500: oklch(0.67 0.01 286);
+  --color-neutral-600: oklch(0.60 0.01 286);
+  --color-neutral-700: oklch(0.52 0.01 286);
+  --color-neutral-800: oklch(0.44 0.01 286);
+  --color-neutral-900: oklch(0.36 0.01 286);
+  --color-neutral-950: oklch(0.27 0.00 286);
+
+  /* Wet Asphalt */
+  --color-wet-asphalt-100: oklch(0.95 0.00 248);
+  --color-wet-asphalt-200: oklch(0.89 0.01 242);
+  --color-wet-asphalt-300: oklch(0.77 0.02 251);
+  --color-wet-asphalt-400: oklch(0.65 0.02 246);
+  --color-wet-asphalt-500: oklch(0.53 0.03 250);
+  --color-wet-asphalt-600: oklch(0.40 0.04 249);
+  --color-wet-asphalt-700: oklch(0.36 0.04 250);
+  --color-wet-asphalt-800: oklch(0.33 0.03 251);
+  --color-wet-asphalt-900: oklch(0.30 0.03 247);
+  --color-wet-asphalt-950: oklch(0.26 0.03 249);
+
+  /* Midnight Blue */
+  --color-midnight-blue-100: oklch(0.94 0.00 248);
+  --color-midnight-blue-200: oklch(0.88 0.01 255);
+  --color-midnight-blue-300: oklch(0.76 0.01 248);
+  --color-midnight-blue-400: oklch(0.63 0.02 248);
+  --color-midnight-blue-500: oklch(0.50 0.03 247);
+  --color-midnight-blue-600: oklch(0.36 0.04 249);
+  --color-midnight-blue-700: oklch(0.33 0.03 247);
+  --color-midnight-blue-800: oklch(0.30 0.03 249);
+  --color-midnight-blue-900: oklch(0.27 0.03 247);
+  --color-midnight-blue-950: oklch(0.24 0.02 251);
+}

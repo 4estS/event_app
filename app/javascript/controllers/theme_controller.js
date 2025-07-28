@@ -5,22 +5,28 @@ import { Controller } from "@hotwired/stimulus"
  */
 
 export default class extends Controller {
+  connect() {
+    const savedTheme = localStorage.getItem("theme")
 
-  toggle() {
-    const current = document.documentElement.dataset.theme || "light"
-    const next = current === "light" ? "dark" : "light"
-    document.documentElement.dataset.theme = next
-    localStorage.setItem("theme", next)
+    if (savedTheme) {
+      // Apply stored preference
+      this.setTheme(savedTheme)
+    } else {
+      // Detect and apply system preference
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+      const defaultTheme = prefersDark ? "dark" : "light"
+      this.setTheme(defaultTheme)
+    }
   }
 
-  applySavedOrSystemTheme() {
-    let theme = localStorage.getItem("theme")
+  toggle() {
+    const current = document.body.dataset.theme
+    const next = current === "light" ? "dark" : "light"
+    this.setTheme(next)
+  }
 
-    if (!theme) {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-      theme = prefersDark ? "dark" : "light"
-    }
-
-    document.documentElement.dataset.theme = theme
+  setTheme(name) {
+    document.body.dataset.theme = name
+    localStorage.setItem("theme", name)
   }
 }

@@ -1,0 +1,48 @@
+/* Card styles for event posts */
+.card-event {
+  @apply max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden border border-[var(--color-alizarin-200)];
+}
+
+.card-event__image-wrapper {
+  @apply relative;
+}
+
+.card-event__image {
+  @apply w-full h-48 object-cover;
+}
+
+.card-event__category {
+  @apply absolute bottom-2 right-2 bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full;
+}
+
+.card-event__content {
+  @apply p-4 space-y-4;
+}
+
+.card-event__description {
+  @apply text-gray-800 text-sm;
+}
+
+.card-event__details {
+  @apply flex items-center text-gray-600 text-xs space-x-4;
+}
+
+.card-event__detail-item {
+  @apply flex items-center gap-1;
+}
+
+.card-event__tags {
+  @apply flex flex-wrap gap-2 text-xs text-blue-700 font-medium;
+}
+
+.card-event__tag {
+  @apply bg-blue-50 px-2 py-1 rounded-full;
+}
+
+.card-event__actions {
+  @apply border-t pt-4 flex items-center justify-between text-sm text-gray-600;
+}
+
+.card-event__action-button {
+  @apply flex items-center gap-1 hover:text-black;
+}
