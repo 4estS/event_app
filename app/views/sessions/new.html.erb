@@ -1,16 +1,17 @@
-<div>
-  <h1>Log In</h1>
-  <h2 class="font-bold text-4xl">Sessions#new</h2>
-  <p>Find me in app/views/sessions/new.html.erb</p>
-  <%= form_with url: login_path, method: :post do |f| %>
-    <div>
+<div class="w-screen h-screen flex items-center justify-center bg-slate-500">
+  <div class="flex flex-col gap-4 max-w-md p-6 shadow rounded-xl bg-slate-200">
+  <h1 class="font-bold text-4xl">Sign In</h1>
+  <p class="text-sm">Sessions#new - Find me in app/views/sessions/new.html.erb</p>
+  <%= form_with url: sign_in_path, method: :post do |f| %>
+    <div class="pb-4">
       <%= label_tag :email %>
-      <%= email_field_tag :email %>
+      <%= email_field_tag :email, nil, class: "block w-full rounded border-2 border-slate-500 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"  %>
     </div>
-    <div>
+    <div class="pb-4">
       <%= label_tag :password %>
-      <%= password_field_tag :password %>
+      <%= password_field_tag :password, nil, class: "block w-full rounded border-2 border-slate-500 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400" %>
     </div>
-    <%= submit_tag "Log in" %>
+    <%= submit_tag "Log in", class: "btn btn-primary" %>
   <% end %>
+</div>
 </div>

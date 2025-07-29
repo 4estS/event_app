@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id]) # raises ActiveRecord::RecordNotFound if missing
-    redirect_to dashboard_path, notice: "Welcome!"
+    redirect_to home_path, notice: "Welcome!"
     # Redirect to show if user not found
     # redirect_to root_path, alert: "User not found" unless @user
   end

@@ -12,6 +12,12 @@ class GuestLocationsController < ApplicationController
     end
   end
 
+  def destroy
+    session.delete(:guest_location)
+    cookies.delete(:guest_location)
+    redirect_to root_path, notice: "Location reset."
+  end
+
   private
 
   def redirect_if_location_missing_or_guest

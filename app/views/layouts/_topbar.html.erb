@@ -1,9 +1,6 @@
-
-
 <header class="bg-white shadow dark:bg-gray-800">
   <div class="container mx-auto px-6 py-3">
     <div class="flex items-center justify-between">
-      
       <!-- Left Side -->
       <div class="flex items-center gap-4">
         <!-- Mobile Menu Button -->
@@ -15,12 +12,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
           </svg>
         </button>
-
         <!-- Brand -->
         <div id="brand" class="text-lg font-semibold text-gray-900 dark:text-white">
           <%= link_to "MyApp", root_path %>
         </div>
-
         <!-- Search (desktop only) -->
         <div class="hidden md:block w-64">
           <div class="relative">
@@ -36,21 +31,21 @@
           </div>
         </div>
       </div>
-
       <!-- Right Side -->
       <div class="flex items-center gap-4">
-        <%= link_to "Sign In", "#",
+        <% unless current_user %>
+          <%= link_to "Sign In", "#",
               class: "btn btn-ghost" %>
-
-        <%= link_to "Sign up", new_user_path, class: "btn btn-secondary" %>
-
+          <%= link_to "Sign up", new_user_path, class: "btn btn-secondary" %>
+        <% end %>
         <button data-controller="theme" data-action="click->theme#toggle"
-                class="btn btn-primary">
+          class="btn btn-primary">
           Toggle Theme
         </button>
-        <%= button_to "Log Out", sign_out_path, method: :delete, class: "text-sm text-red-600 hover:underline", data: { turbo: false } %>
+        <% if current_user %>
+        <%= button_to "Log Out", sign_out_path, method: :delete, class: "btn btn-primary", data: { turbo: false } %>
+        <% end %>
       </div>
-
     </div>
   </div>
 </header>

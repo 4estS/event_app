@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "pages#index"
 
-  resource :guest_location, only: [ :new, :create ]
+  resource :guest_location, only: [ :new, :create, :destroy ]
 
   # Sign up (alias + RESTful routes)
 
