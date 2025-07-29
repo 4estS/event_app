@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "pages#index"
 
+  resource :guest_location, only: [ :new, :create ]
+
   # Sign up (alias + RESTful routes)
 
   get "sign-up", to: "users#new", as: "sign_up"

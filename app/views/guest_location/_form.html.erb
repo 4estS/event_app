@@ -1,0 +1,7 @@
+<%= form_with url: guest_location_path, method: :post, data: { controller: "guest-location" } do |f| %>
+  <div class="space-y-4">
+    <%= f.label :location, "Choose your location", class: "block font-semibold" %>
+    <%= f.text_field :location, class: "block w-full rounded border-2 border-slate-500 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400", data: { guest_location_target: "input" } %>
+    <%= f.submit "Continue", class: "btn btn-primary mt-4", data: { action: "click->guest-location#saveLocation" } %>
+  </div>
+<% end %>
