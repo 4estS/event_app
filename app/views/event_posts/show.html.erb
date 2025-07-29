@@ -19,20 +19,26 @@
     <aside class="order-first min-w-[220px] bg-blue-100 p-4">
       <%= render "layouts/sidebar_nav" %>
     </aside>
-    <!-- Center Column: Feed -->
+    <!-- Main Column -->
     <main class="flex-1 bg-blue-50 p-4">
-      <h1 class="font-bold text-4xl">Pages#home</h1>
-      <p>Find me in app/views/pages/home.html.erb</p>
-      <%= render "layouts/event_post" %>
+      <div class="max-w-2xl mx-auto space-y-6">
+  <h1 class="text-2xl font-bold"><%= @event_post.title %></h1>
+
+  <p class="text-gray-600">
+    <strong>Start:</strong> <%= l(@event_post.starts_at, format: :long) %><br>
+    <strong>End:</strong> <%= l(@event_post.ends_at, format: :long) %>
+  </p>
+
+  <div class="prose">
+    <%= simple_format(@event_post.description) %>
+  </div>
+
+  <div class="flex gap-4">
+    <%= link_to "Edit", edit_event_post_path(@event_post), class: "text-blue-600 hover:underline" %>
+    <%= link_to "Back", event_posts_path, class: "text-gray-600 hover:underline" %>
+  </div>
+</div>
+
     </main>
-    <!-- Right Column: Trending/Info -->
-    <aside class="min-w-[340px] bg-blue-100 p-4">
-      <h2 class="text-lg font-semibold mb-2">Trending</h2>
-      <ul class="list-disc list-inside text-sm text-gray-700">
-        <li>#rails</li>
-        <li>#hotwire</li>
-        <li>#tailwind</li>
-      </ul>
-    </aside>
   </div>
 </div>
