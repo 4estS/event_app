@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   # static Pages
   get "dashboard", to: "pages#dashboard"
-  get "/home", to: "pages#home"
+  get "/home", to: "pages#home", as: :home
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
