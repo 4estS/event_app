@@ -10,4 +10,8 @@ body {
   background-color: var(--color-base-300);
 }
 
+main {
+  background-color: var(--color-base-100);
+}
+
 

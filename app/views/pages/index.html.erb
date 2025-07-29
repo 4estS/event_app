@@ -1,4 +1,29 @@
-<div>
-  <h1 class="font-bold text-4xl">Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+  <!-- Left Column: Navigation -->
+  <aside class="lg:col-span-3">
+    <%= render "layouts/sidebar_nav" %>
+  </aside>
+  <!-- Center Column: Feed -->
+  <main class="lg:col-span-6 space-y-6">
+    <div class="flex flex-col space-y-6">
+      <h1 class="font-bold text-4xl">Pages#home</h1>
+      <p>Find me in app/views/pages/home.html.erb</p>
+      <%= render "layouts/event_post" %>
+    </div>
+  </main>
+  <!-- Right Column: Trending/Info -->
+  <aside class="lg:col-span-3 space-y-4">
+    <div class="bg-white rounded-xl p-4 shadow">
+      <h2 class="text-lg font-semibold mb-2">Trending</h2>
+      <ul class="list-disc list-inside text-sm text-gray-700">
+        <li>#rails</li>
+        <li>#hotwire</li>
+        <li>#tailwind</li>
+      </ul>
+    </div>
+    <div class="bg-white rounded-xl p-4 shadow">
+      <h2 class="text-lg font-semibold mb-2">Info</h2>
+      <p class="text-sm text-gray-600">Welcome to the dashboard. Stay updated with the latest posts and news.</p>
+    </div>
+  </aside>
 </div>

@@ -24,9 +24,8 @@
 
   <body>
     <%= render 'layouts/topbar' %>
-    <main class="max-w-7xl mx-auto mt-28 flex px-4">
-      <%= yield %>
-      <%= render 'layouts/event_post' %>
-    </main>
+    <div class="container mx-auto px-4">
+    <%= yield %>
+    </div>  
   </body>
 </html>
