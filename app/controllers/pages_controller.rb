@@ -7,9 +7,10 @@ class PagesController < ApplicationController
     redirect_to home_path if logged_in_or_has_location?
   end
   def home
+    @events = Event.all
   end
   def dashboard
-    @event_posts = current_user.event_posts.order(starts_at: :desc)
+    @events = current_user.events.order(starts_at: :desc)
   end
 
   def store_guest_location

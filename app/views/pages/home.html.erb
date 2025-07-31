@@ -23,7 +23,16 @@
     <main class="flex-1 bg-blue-50 p-4">
       <h1 class="font-bold text-4xl">Pages#home</h1>
       <p>Find me in app/views/pages/home.html.erb</p>
-      <%= render "layouts/event_post" %>
+      <div class="flex-1 gap-x-4">
+        <% @events.each do |event| %>
+          <div class="border border-gray-200 p-4 rounded shadow-sm mb-4">
+            <h2 class="text-lg font-semibold">
+              <%= link_to event.title, event_path(event), class: "hover:underline" %>
+            </h2>
+            <p class="mt-2 text-gray-700"><%= truncate(event.description, length: 100) %></p>
+          </div>
+        <% end %>
+      </div>
     </main>
     <!-- Right Column: Trending/Info -->
     <aside class="min-w-[340px] bg-blue-100 p-4">

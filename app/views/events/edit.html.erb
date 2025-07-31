@@ -23,7 +23,9 @@
     <!-- Main Column -->
     <main class="flex-1 bg-blue-50 p-4">
       <h1 class="text-xl font-semibold mb-4"><%= action_name.capitalize %> Event</h1>
-      <%= render "form" %>
+      <%= turbo_frame_tag "event_form" do %>
+        <%= render "form", event: @event %>
+      <% end %>
     </main>
   </div>
 </div>

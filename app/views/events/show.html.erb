@@ -22,20 +22,20 @@
     <!-- Main Column -->
     <main class="flex-1 bg-blue-50 p-4">
       <div class="max-w-2xl mx-auto space-y-6">
-        <% if @event_post.category.present? %>
-            <%= category_badge(@event_post.category) %>
+        <% if @event.category.present? %>
+            <%= category_badge(@event.category) %>
         <% end %>
-        <h1 class="text-2xl font-bold"><%= @event_post.title %></h1>
+        <h1 class="text-2xl font-bold"><%= @event.title %></h1>
         <p class="text-gray-600">
-          <strong>Start:</strong> <%= l(@event_post.starts_at, format: :long) %><br>
-          <strong>End:</strong> <%= l(@event_post.ends_at, format: :long) %>
+          <strong>Start:</strong> <%= l(@event.starts_at, format: :long) %><br>
+          <strong>End:</strong> <%= l(@event.ends_at, format: :long) %>
         </p>
         <div class="prose">
-          <%= simple_format(@event_post.description) %>
+          <%= simple_format(@event.description) %>
         </div>
         <div class="flex gap-4">
-          <%= link_to "Edit", edit_event_post_path(@event_post), class: "text-blue-600 hover:underline" %>
-          <%= link_to "Back", event_posts_path, class: "text-gray-600 hover:underline" %>
+          <%= link_to "Edit", edit_event_path(@event), class: "text-blue-600 hover:underline" %>
+          <%= link_to "Back", events_path, class: "text-gray-600 hover:underline" %>
         </div>
       </div>
     </main>

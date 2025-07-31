@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_31_000856) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_31_141946) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,7 +22,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_31_000856) do
     t.string "color"
   end
 
-  create_table "event_posts", force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title"
     t.text "description"
@@ -31,8 +31,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_31_000856) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id", null: false
-    t.index ["category_id"], name: "index_event_posts_on_category_id"
-    t.index ["user_id"], name: "index_event_posts_on_user_id"
+    t.index ["category_id"], name: "index_events_on_category_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -42,6 +42,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_31_000856) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "event_posts", "categories"
-  add_foreign_key "event_posts", "users"
+  add_foreign_key "events", "categories"
+  add_foreign_key "events", "users"
 end

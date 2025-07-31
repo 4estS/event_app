@@ -1,0 +1,5 @@
+<div id="events" class="space-y-4">
+  <% (events || []).each do |event| %>
+    <%= render partial: "events/card", locals: { event: event } %>
+  <% end %>
+</div>
