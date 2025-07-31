@@ -1,14 +1,54 @@
-<!-- app/views/events/_tag_selector.html.erb -->
-<div data-controller="tag-autocomplete">
-  <input
-    data-tag-autocomplete-target="input"
-    type="text"
-    placeholder="Add tag..."
-    class="border rounded px-2 py-1 w-full"
-    data-action="input->tag-autocomplete#search"
-  >
+<div
+  data-controller="tag-autocomplete"
+  class="border rounded px-2 py-1 w-full flex flex-wrap items-center gap-2"
+  data-action="click->tag-autocomplete#focusInput"
+>
+  <!-- Server-rendered existing tags -->
+  <% @event.tags.each do |tag| %>
+    <div class="inline-flex items-center gap-1 bg-blue-100 text-blue-800 rounded px-2 py-1 text-sm">
+      <span><%= tag.name %></span>
+      <input type="hidden" name="event[tag_ids][]" value="<%= tag.id %>" data-token-hidden>
+      <button
+        type="button"
+        class="text-blue-500 hover:text-red-600 font-bold"
+        data-action="click->tag-autocomplete#remove"
+        data-tag-id="<%= tag.id %>"
+      >
+        ×
+      </button>
+    </div>
+  <% end %>
 
-  <div data-tag-autocomplete-target="suggestions" class="border rounded mt-2 bg-white z-10 absolute"></div>
+  <!-- Token template for JS-created tags -->
+  <template data-tag-autocomplete-target="tokenTemplate">
+    <div class="inline-flex items-center gap-1 bg-blue-100 text-blue-800 rounded px-2 py-1 text-sm">
+      <span data-token-name></span>
+      <input type="hidden" name="event[tag_ids][]" data-token-hidden>
+      <button
+        type="button"
+        class="text-blue-500 hover:text-red-600 font-bold"
+        data-action="click->tag-autocomplete#remove"
+      >
+        ×
+      </button>
+    </div>
+  </template>
 
-  <div data-tag-autocomplete-target="selected" class="mt-2 flex flex-wrap gap-1"></div>
+  <!-- Input field -->
+  <div class="flex-grow">
+    <input
+      type="text"
+      autocomplete="off"
+      class="border-none outline-none w-auto min-w-[6rem] flex-grow"
+      placeholder="Add tags..."
+      data-tag-autocomplete-target="input"
+      data-action="input->tag-autocomplete#search keydown->tag-autocomplete#navigate keyup->tag-autocomplete#handleBackspace"
+    />
+  </div>
+
+  <!-- Suggestion list -->
+  <div
+    data-tag-autocomplete-target="suggestions"
+    class="absolute mt-1 w-full bg-white rounded z-10"
+  ></div>
 </div>
