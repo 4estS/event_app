@@ -5,8 +5,9 @@
     <li><%= link_to "Dashboard", dashboard_path, class: "block px-2 py-1 rounded hover:bg-gray-100" %></li>
     <% if current_user %>
       <li>
-        <%= link_to "My Events", new_event_post_path, class: "block px-2 py-1 rounded hover:bg-gray-100" %>
+        <%= link_to "Create Event", new_event_post_path, class: "block px-2 py-1 rounded hover:bg-gray-100" %>
       </li>
     <% end %>
+    
   </ul>
 </nav>

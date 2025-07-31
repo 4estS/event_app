@@ -19,17 +19,25 @@ class EventPostsController < ApplicationController
   def create
     @event_post = current_user.event_posts.new(event_post_params)
     if @event_post.save
-      redirect_to @event_post, notice: "Event was successfully created."
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to dashboard_path, notice: "Event was successfully created." }
+      end
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit; end
+  def edit
+    @event_post = current_user.event_posts.find(params[:id])
+  end
 
   def update
     if @event_post.update(event_post_params)
-      redirect_to @event_post, notice: "Event was successfully updated."
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to dashboard_path, notice: "Event updated." }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +45,10 @@ class EventPostsController < ApplicationController
 
   def destroy
     @event_post.destroy
-    redirect_to event_posts_path, notice: "Event was deleted."
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to dashboard_path, notice: "event deleted." }
+    end
   end
 
   private
@@ -47,7 +58,7 @@ class EventPostsController < ApplicationController
   end
 
   def event_post_params
-    params.require(:event_post).permit(:title, :description, :starts_at, :ends_at)
+    params.require(:event_post).permit(:title, :description, :category_id, :starts_at, :ends_at)
   end
 
   def require_login

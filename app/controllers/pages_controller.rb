@@ -9,6 +9,7 @@ class PagesController < ApplicationController
   def home
   end
   def dashboard
+    @event_posts = current_user.event_posts.order(starts_at: :desc)
   end
 
   def store_guest_location
