@@ -1,0 +1,14 @@
+<!-- app/views/events/_tag_selector.html.erb -->
+<div data-controller="tag-autocomplete">
+  <input
+    data-tag-autocomplete-target="input"
+    type="text"
+    placeholder="Add tag..."
+    class="border rounded px-2 py-1 w-full"
+    data-action="input->tag-autocomplete#search"
+  >
+
+  <div data-tag-autocomplete-target="suggestions" class="border rounded mt-2 bg-white z-10 absolute"></div>
+
+  <div data-tag-autocomplete-target="selected" class="mt-2 flex flex-wrap gap-1"></div>
+</div>

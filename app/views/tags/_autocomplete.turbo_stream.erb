@@ -1,0 +1,11 @@
+<!-- app/views/tags/autocomplete.turbo_stream.erb -->
+<% @tags.each do |tag| %>
+  <div
+    class="cursor-pointer px-2 py-1 hover:bg-gray-200"
+    data-action="click->tag-autocomplete#select"
+    data-tag-id="<%= tag.id %>"
+    data-tag-name="<%= tag.name %>"
+  >
+    <%= tag.name %>
+  </div>
+<% end %>
