@@ -1,6 +1,6 @@
 <%= render 'layouts/topbar' %>
 <div class="container mx-auto flex justify-between p-4">
-  <div>Welcome, <%= current_user.email if current_user %></div>
+  <div class="!text-white">Welcome, <%= current_user.email if current_user %></div>
   <div class="flex flex-row align-middle">
     <% unless current_user %>
       <% location = session[:guest_location] || cookies[:guest_location] %>
