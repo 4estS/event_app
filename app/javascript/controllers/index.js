@@ -9,3 +9,6 @@ application.register("guest-location", GuestLocationController)
 
 import TagAutocompleteController from "./tag_autocomplete_controller"
 application.register("tag-autocomplete", TagAutocompleteController)
+
+import AddressLookupController from "./address_lookup_controller"
+application.register("address-lookup", AddressLookupController)

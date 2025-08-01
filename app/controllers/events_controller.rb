@@ -56,7 +56,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :category_id, :starts_at, :ends_at, tag_ids: [])
+    params.require(:event).permit(:title, :description, :location_name, :location, :category_id, :starts_at, :ends_at, tag_ids: [])
   end
 
   def require_login

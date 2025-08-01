@@ -7,11 +7,11 @@
 @import "./components/button.css";
 
 body {
-  background-color: var(--color-base-300);
+  background-color: var(--color-slate-400);
 }
 
 main {
-  background-color: var(--color-base-100);
+  background-color: var(--color-slate-300);
 }
 
 
