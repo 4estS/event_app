@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get "/home", to: "pages#home", as: :home
 
   # Event post routes
-  resources :events
+  resources :events, param: :slug
 
   resources :tags, only: [] do
     collection do
