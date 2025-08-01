@@ -12,3 +12,6 @@ application.register("tag-autocomplete", TagAutocompleteController)
 
 import AddressLookupController from "./address_lookup_controller"
 application.register("address-lookup", AddressLookupController)
+
+import TicketUrlController from "./ticket_url_controller"
+application.register("ticket-url", TicketUrlController)

@@ -32,6 +32,27 @@
       <%= f.label :ends_at, class: "block text-sm font-medium text-gray-700" %>
       <%= f.datetime_select :ends_at, class: "mt-1" %>
     </div>
+    <div>
+      <%= f.label :website_url, class: "block text-sm font-medium text-gray-700" %>
+      <%= f.text_field :website_url, class: "w-full border rounded p-2 mb-2" %>
+    </div>
+    <div data-controller="ticket-url">
+  <%= f.label :event_type, "Event Type", class: "block font-medium text-gray-700 mb-2" %>
+  <div class="space-y-2 mb-4">
+    <% Event.event_types.each_key do |type| %>
+      <div class="flex items-center">
+        <%= f.radio_button :event_type, type, id: "event_type_#{type}", data: { action: "ticket-url#toggle" } %>
+        <%= f.label "event_type_#{type}", type.humanize, class: "ml-2 text-gray-700" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div data-ticket-url-target="ticketUrl" class="<%= f.object.ticket_required? ? '' : 'hidden' %>">
+    <%= f.label :ticket_url, class: "block text-sm font-medium text-gray-700" %>
+    <%= f.text_field :ticket_url, class: "w-full border rounded p-2 mb-2" %>
+  </div>
+</div>
+
     <div class="mb-4">
       <%= f.label :category_id, "Category", class: "block text-sm font-medium text-gray-700" %>
       <%= f.collection_select :category_id, Category.all, :id, :name,
