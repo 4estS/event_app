@@ -49,13 +49,13 @@ class EventsController < ApplicationController
     @event = current_user.events.new
   end
   def edit
-    @event = current_user.events.find(params[:id])
+    @event = current_user.events.find_by!(slug: params[:slug])
   end
 
   private
-
+  # app/controllers/events_controller.rb
   def set_event
-    @event = current_user.events.find(params[:id])
+    @event = Event.find_by!(slug: params[:slug])
   end
 
   def event_params
