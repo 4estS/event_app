@@ -7,7 +7,7 @@
 @import "./components/button.css";
 
 body {
-  background-color: var(--color-slate-600);
+  background-color: var(--color-base-600);
 }
 
 main {

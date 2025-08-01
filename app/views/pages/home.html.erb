@@ -30,6 +30,8 @@
               <%= link_to event.title, event_path(event), class: "hover:underline" %>
             </h2>
             <p class="mt-2 text-gray-700"><%= truncate(event.description, length: 100) %></p>
+            <p class="mt-2 text-gray-700"><%= event.location_name %></p>
+            <p class="mt-2 text-gray-700"><%= event.location %></p>
           </div>
         <% end %>
       </div>
