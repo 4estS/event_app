@@ -4,6 +4,7 @@ class Event < ApplicationRecord
 
   validates :title, :description, :starts_at, :ends_at, presence: true
   validates :event_type, presence: true
+  validates :status, presence: true
   validate :maximum_five_tags
 
   broadcasts_to ->(event) { [ event.user, :events ] }, inserts_by: :prepend, target: :events
@@ -15,7 +16,15 @@ class Event < ApplicationRecord
     free: 0,
     paid: 1,
     ticket_required: 2,
-    donation_based: 3 }
+    donation_based: 3
+  }
+  enum :status, {
+    draft: 0,
+    pending: 1,
+    published: 2,
+    cancelled: 3,
+    archived: 4
+  }, default: :draft
 
   private
 

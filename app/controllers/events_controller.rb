@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
+    @event.status = params[:commit] == "Publish" ? :published : :draft
 
     if @event.save
       @events = Event.order(created_at: :desc)
@@ -17,6 +18,8 @@ class EventsController < ApplicationController
     end
   end
   def update
+    @event.status = params[:commit] == "Publish" ? :published : :draft
+
     if @event.update(event_params)
       respond_to do |format|
         format.turbo_stream
