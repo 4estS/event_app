@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_01_234346) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_02_042347) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -35,8 +35,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_01_234346) do
     t.bigint "user_id", null: false
     t.string "title"
     t.text "description"
-    t.datetime "starts_at"
-    t.datetime "ends_at"
+    t.time "starts_at"
+    t.time "ends_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id", null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_01_234346) do
     t.integer "event_type", default: 0, null: false
     t.integer "status", default: 0, null: false
     t.string "slug", limit: 63
+    t.date "starts_on"
     t.index ["category_id"], name: "index_events_on_category_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
     t.index ["user_id"], name: "index_events_on_user_id"

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "dashboard/show"
   root "pages#index"
 
   resource :guest_location, only: [ :new, :create, :destroy ]
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   delete "sign_out", to: "sessions#destroy"
 
   # static Pages
-  get "dashboard", to: "pages#dashboard"
+  get "dashboard", to: "dashboard#show"
   get "/home", to: "pages#home", as: :home
 
   # Event post routes
