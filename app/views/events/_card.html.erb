@@ -1,17 +1,31 @@
 <%= turbo_frame_tag dom_id(event) do %>
-  <div style="background-color: <%= event.category.color %>;" class="border p-4 rounded shadow-sm">
-    <h2 class="text-lg font-semibold">
-      <%= link_to event.title, event_path(event), class: "hover:underline" %>
-    </h2>
-    <p class="text-sm text-gray-500">
-      <%= l(event.starts_at) %> – <%= l(event.ends_at) %>
-    </p>
-    <div class="mt-2 text-gray-700"><%= truncate(event.description, length: 100) %></div>
-    <div class="mt-4 flex gap-4">
-      <%= link_to 'Edit', edit_event_path(event), class: "text-blue-600 hover:underline" %>
+  <div class="relative rounded-xl border shadow-sm overflow-hidden bg-white border-l-[16px] hover:bg-gray-50" style="border-color: <%= event.category.color %>;">
+    
+    <!-- Actions in top-right, outside the link -->
+    <div class="absolute top-4 right-4 flex space-x-4 z-10" data-turbo="false">
+      <%= link_to "Edit", edit_event_path(event),
+            class: "text-blue-600 hover:underline font-medium text-sm" %>
+
       <%= button_to "Delete", event_path(event),
-            method: :delete, data: { turbo_confirm: "Are you sure?" },
-            class: "text-red-600 hover:underline bg-transparent border-none p-0" %>
+            method: :delete,
+            data: { turbo_confirm: "Are you sure?" },
+            form: { class: "inline" },
+            class: "text-red-600 hover:underline font-medium text-sm bg-transparent border-none p-0" %>
     </div>
+
+    <!-- Linkable content area -->
+    <%= link_to edit_event_path(event), class: "block p-4" do %>
+      <h2 class="text-xl font-bold text-gray-900 group-hover:underline">
+        <%= event.title %>
+      </h2>
+      <% if event.starts_at.present? %>
+        <p class="text-sm text-gray-600 mt-1">
+          <%= l(event.starts_at.to_date) %> | <%= l(event.starts_at, format: :short) %>
+        </p>
+      <% else %>
+        <p class="text-sm text-gray-400 italic mt-1">TBD</p>
+      <% end %>
+    <% end %>
+
   </div>
 <% end %>

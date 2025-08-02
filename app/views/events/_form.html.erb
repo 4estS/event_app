@@ -43,13 +43,18 @@
   </div>
 
   <div>
-    <%= f.label :starts_at, class: "block text-sm font-medium text-gray-700" %>
-    <%= f.datetime_select :starts_at, class: "mt-1" %>
+    <%= f.label :starts_on, "Start Date", class: "block text-sm font-medium text-gray-700" %>
+    <%= f.date_field :starts_on, class: "mt-1 block w-full" %>
   </div>
 
   <div>
-    <%= f.label :ends_at, class: "block text-sm font-medium text-gray-700" %>
-    <%= f.datetime_select :ends_at, class: "mt-1" %>
+    <%= f.label :starts_at, "Start Time", class: "block text-sm font-medium text-gray-700" %>
+    <%= f.time_field :starts_at, class: "mt-1 block w-full" %>
+  </div>
+
+  <div>
+    <%= f.label :ends_at, "End Time", class: "block text-sm font-medium text-gray-700" %>
+    <%= f.time_field :ends_at, class: "mt-1 block w-full" %>
   </div>
 
   <div>

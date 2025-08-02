@@ -46,7 +46,7 @@ class EventsController < ApplicationController
     end
   end
   def new
-    @event = current_user.events.new
+    @event = current_user.events.new(starts_on: Date.current)
   end
   def edit
     @event = current_user.events.find_by!(slug: params[:slug])
@@ -59,7 +59,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :location_name, :location, :website_url, :event_type, :ticket_url, :category_id, :starts_at, :ends_at, tag_ids: [])
+    params.require(:event).permit(:title, :description, :location_name, :location, :website_url, :event_type, :ticket_url, :category_id, :starts_on, :starts_at, :ends_at, tag_ids: [])
   end
 
   def require_login

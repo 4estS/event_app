@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: [ :dashboard ]
   before_action :require_location_or_auth, except: [ :index ]
 
   helper_method :current_user, :logged_in?
@@ -8,9 +7,6 @@ class PagesController < ApplicationController
   end
   def home
     @events = Event.published.order(created_at: :desc)
-  end
-  def dashboard
-    @events = current_user.events.order(starts_at: :desc)
   end
 
   def store_guest_location
