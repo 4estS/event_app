@@ -13,22 +13,55 @@
       </span>
     </p>
   </div>
+  <!-- Image dropzone -->
+<div class="mx-auto max-w-xs" data-controller="image-upload" data-image-upload-max-size-value="2097152">
+  <%= f.label :image, "Upload Event Image", class: "mb-1 block text-sm font-medium text-gray-700" %>
 
+  <label for="event_image" class="flex w-full cursor-pointer appearance-none items-center justify-center rounded-md border-2 border-dashed border-gray-200 p-6 transition-all hover:border-primary-300">
+    
+    <!-- 👇 Dropzone inner content -->
+    <div data-image-upload-target="preview" class="w-full text-center">
+      <% if @event.image.attached? %>
+        <%= image_tag url_for(@event.image), class: "mx-auto max-h-48 w-auto rounded-lg shadow" %>
+      <% else %>
+        <div class="space-y-1">
+          <div class="mx-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-gray-500">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+            </svg>
+          </div>
+          <div class="text-gray-600">
+            <span class="font-medium text-primary-500 hover:text-primary-700">Click to upload</span> or drag and drop
+          </div>
+          <p class="text-sm text-gray-500">SVG, PNG, JPG or GIF (max. 800x400px)</p>
+        </div>
+      <% end %>
+    </div>
+
+    <%= f.file_field :image,
+      class: "sr-only",
+      id: "event_image",
+      data: {
+        image_upload_target: "input",
+        action: "change->image-upload#validate"
+      } %>
+  </label>
+
+  <p data-image-upload-target="error" class="mt-2 text-sm text-red-500"></p>
+</div>
+  <!-- End Image dropzone -->
   <div>
     <%= f.label :title, class: "block text-sm font-medium text-gray-700" %>
     <%= f.text_field :title, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
   </div>
-
   <div>
     <%= f.label :description, class: "block text-sm font-medium text-gray-700" %>
     <%= f.text_area :description, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
   </div>
-
   <!-- Address Lookup -->
   <div data-controller="address-lookup" data-address-lookup-access-token-value="<%= ENV['MAPBOX_PUBLIC_KEY'] %>">
     <label class="block font-semibold" for="event_location_name">Location Name</label>
     <%= f.text_field :location_name, class: "w-full border rounded p-2 mb-2" %>
-
     <label class="block font-semibold" for="address_search">Search Address</label>
     <input
       type="text"
@@ -37,63 +70,54 @@
       data-action="input->address-lookup#search"
       placeholder="e.g. 123 Main St, Springfield, IL"
       class="w-full border rounded p-2"
-    >
-    <div data-address-lookup-target="suggestions" class="mt-2 space-y-1"></div>
-    <%= f.hidden_field :location, id: "event_location" %>
-  </div>
-
-  <div>
-    <%= f.label :starts_on, "Start Date", class: "block text-sm font-medium text-gray-700" %>
-    <%= f.date_field :starts_on, class: "mt-1 block w-full" %>
-  </div>
-
-  <div>
-    <%= f.label :starts_at, "Start Time", class: "block text-sm font-medium text-gray-700" %>
-    <%= f.time_field :starts_at, class: "mt-1 block w-full" %>
-  </div>
-
-  <div>
-    <%= f.label :ends_at, "End Time", class: "block text-sm font-medium text-gray-700" %>
-    <%= f.time_field :ends_at, class: "mt-1 block w-full" %>
-  </div>
-
-  <div>
-    <%= f.label :website_url, class: "block text-sm font-medium text-gray-700" %>
-    <%= f.text_field :website_url, class: "w-full border rounded p-2 mb-2" %>
-  </div>
-
-  <!-- Event Type and Ticket URL -->
-  <div data-controller="ticket-url">
-    <%= f.label :event_type, "Event Type", class: "block font-medium text-gray-700 mb-2" %>
-    <div class="space-y-2 mb-4">
-      <% Event.event_types.each_key do |type| %>
-        <div class="flex items-center">
-          <%= f.radio_button :event_type, type, id: "event_type_#{type}", data: { action: "ticket-url#toggle" } %>
-          <%= f.label "event_type_#{type}", type.humanize, class: "ml-2 text-gray-700" %>
-        </div>
-      <% end %>
+      >
+      <div data-address-lookup-target="suggestions" class="mt-2 space-y-1"></div>
+      <%= f.hidden_field :location, id: "event_location" %>
     </div>
-
-    <div data-ticket-url-target="ticketUrl" class="<%= f.object.ticket_required? ? '' : 'hidden' %>">
-      <%= f.label :ticket_url, class: "block text-sm font-medium text-gray-700" %>
-      <%= f.text_field :ticket_url, class: "w-full border rounded p-2 mb-2" %>
+    <div>
+      <%= f.label :starts_on, "Start Date", class: "block text-sm font-medium text-gray-700" %>
+      <%= f.date_field :starts_on, class: "mt-1 block w-full" %>
     </div>
-  </div>
-
-  <div class="mb-4">
-    <%= f.label :category_id, "Category", class: "block text-sm font-medium text-gray-700" %>
-    <%= f.collection_select :category_id, Category.all, :id, :name,
+    <div>
+      <%= f.label :starts_at, "Start Time", class: "block text-sm font-medium text-gray-700" %>
+      <%= f.time_field :starts_at, class: "mt-1 block w-full" %>
+    </div>
+    <div>
+      <%= f.label :ends_at, "End Time", class: "block text-sm font-medium text-gray-700" %>
+      <%= f.time_field :ends_at, class: "mt-1 block w-full" %>
+    </div>
+    <div>
+      <%= f.label :website_url, class: "block text-sm font-medium text-gray-700" %>
+      <%= f.text_field :website_url, class: "w-full border rounded p-2 mb-2" %>
+    </div>
+    <!-- Event Type and Ticket URL -->
+    <div data-controller="ticket-url">
+      <%= f.label :event_type, "Event Type", class: "block font-medium text-gray-700 mb-2" %>
+      <div class="space-y-2 mb-4">
+        <% Event.event_types.each_key do |type| %>
+          <div class="flex items-center">
+            <%= f.radio_button :event_type, type, id: "event_type_#{type}", data: { action: "ticket-url#toggle" } %>
+            <%= f.label "event_type_#{type}", type.humanize, class: "ml-2 text-gray-700" %>
+          </div>
+        <% end %>
+      </div>
+      <div data-ticket-url-target="ticketUrl" class="<%= f.object.ticket_required? ? '' : 'hidden' %>">
+        <%= f.label :ticket_url, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :ticket_url, class: "w-full border rounded p-2 mb-2" %>
+      </div>
+    </div>
+    <div class="mb-4">
+      <%= f.label :category_id, "Category", class: "block text-sm font-medium text-gray-700" %>
+      <%= f.collection_select :category_id, Category.all, :id, :name,
       { prompt: "Select a category" },
       { class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" } %>
-  </div>
-
-  <div>
-    <%= render "tag_selector" %>
-  </div>
-
-  <!-- Submit Buttons -->
-  <div class="flex gap-4">
-    <%= f.submit "Save as Draft", name: "commit", class: "bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700" %>
-    <%= f.submit "Publish", name: "commit", class: "bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" %>
-  </div>
-<% end %>
+    </div>
+    <div>
+      <%= render "tag_selector" %>
+    </div>
+    <!-- Submit Buttons -->
+    <div class="flex gap-4">
+      <%= f.submit "Save as Draft", name: "commit", class: "bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700" %>
+      <%= f.submit "Publish", name: "commit", class: "bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" %>
+    </div>
+  <% end %>
