@@ -1,31 +1,53 @@
-<%= turbo_frame_tag dom_id(event) do %>
-  <div class="relative rounded-xl border shadow-sm overflow-hidden bg-white border-l-[16px] hover:bg-gray-50" style="border-color: <%= event.category.color %>;">
-    
-    <!-- Actions in top-right, outside the link -->
-    <div class="absolute top-4 right-4 flex space-x-4 z-10" data-turbo="false">
-      <%= link_to "Edit", edit_event_path(event),
-            class: "text-blue-600 hover:underline font-medium text-sm" %>
-
-      <%= button_to "Delete", event_path(event),
-            method: :delete,
-            data: { turbo_confirm: "Are you sure?" },
-            form: { class: "inline" },
-            class: "text-red-600 hover:underline font-medium text-sm bg-transparent border-none p-0" %>
+<% @events.each do |event| %>
+  <div class="card-event">
+    <!-- Image -->
+    <% if event.image.attached? %>
+    <div class="card-event__image-wrapper">
+      <%= image_tag url_for(event.image), class: "card-event__image max-w-full h-auto", alt: "Event image" %>
+      <span class="card-event__category">
+        Arts & Entertainment
+      </span>
     </div>
-
-    <!-- Linkable content area -->
-    <%= link_to edit_event_path(event), class: "block p-4" do %>
-      <h2 class="text-xl font-bold text-gray-900 group-hover:underline">
-        <%= event.title %>
-      </h2>
-      <% if event.starts_at.present? %>
-        <p class="text-sm text-gray-600 mt-1">
-          <%= l(event.starts_at.to_date) %> | <%= l(event.starts_at, format: :short) %>
-        </p>
-      <% else %>
-        <p class="text-sm text-gray-400 italic mt-1">TBD</p>
-      <% end %>
     <% end %>
-
+    <!-- Title -->
+    <h2 class="text-lg font-semibold">
+      <%= link_to event.title, event_path(event), class: "hover:underline" %>
+    </h2>
+    <!-- Content -->
+    <div class="card-event__content">
+      <p class="card-event__description">
+        <%= event.description %>
+      </p>
+      <!-- Event details -->
+      <div class="card-event__details">
+        <div class="card-event__detail-item">
+          <span>📅</span><span>01-20-2025</span>
+        </div>
+        <div class="card-event__detail-item">
+          <span>⏰</span><span>09:00 PM</span>
+        </div>
+        <div class="card-event__detail-item">
+          <span>📍</span><span><%= event.location_name %></span>
+          <p class="mt-2 text-gray-700"><%= event.location %></p>
+        </div>
+      </div>
+      <p class="text-sm text-gray-500 mt-1">
+        <%= event.event_type&.humanize || "Unknown" %>
+      </p>
+      <!-- Tags -->
+      <div class="card-event__tags">
+        <span class="card-event__tag">#community</span>
+        <span class="card-event__tag">#volunteer</span>
+        <span class="card-event__tag">#animalrescue</span>
+        <span class="card-event__tag">#animalwelfare</span>
+      </div>
+      <!-- Actions -->
+      <div class="card-event__actions">
+        <button class="card-event__action-button">🤍 Interested</button>
+        <button class="card-event__action-button">🚗 Going</button>
+        <button class="card-event__action-button">🔗 Share</button>
+        <button class="card-event__action-button">💾 Save</button>
+      </div>
+    </div>
   </div>
 <% end %>
