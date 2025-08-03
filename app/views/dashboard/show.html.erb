@@ -29,7 +29,7 @@
       
       <%= turbo_frame_tag "events" do %>
       <div class="flex flex-col gap-y-4">
-        <%= render partial: "events/card", collection: @events, as: :event %>
+        <%= render partial: "events/admin_card", collection: @events, as: :event %>
       </div>
       <% end %>
       
