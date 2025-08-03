@@ -15,3 +15,6 @@ application.register("address-lookup", AddressLookupController)
 
 import TicketUrlController from "./ticket_url_controller"
 application.register("ticket-url", TicketUrlController)
+
+import ImageUploadController from "./image_upload_controller"
+application.register("image-upload", ImageUploadController)

@@ -5,6 +5,8 @@ class Event < ApplicationRecord
   has_many :event_tags, dependent: :destroy
   has_many :tags, through: :event_tags
 
+  has_one_attached :image
+
   enum :event_type, {
     free: 0,
     paid: 1,
@@ -27,6 +29,7 @@ class Event < ApplicationRecord
   validates :status, presence: true
   validates :slug, presence: true, uniqueness: true, length: { maximum: 63 }
   validate :maximum_five_tags
+  validate :image_size_within_limit
 
   before_validation :generate_slug, on: :create
 
@@ -58,5 +61,13 @@ class Event < ApplicationRecord
     end
 
     slug_candidate
+  end
+
+  def image_size_within_limit
+    return unless image.attached?
+
+    if image.blob.byte_size > 2.megabytes
+      errors.add(:image, "is too large. Maximum size is 2MB.")
+    end
   end
 end
