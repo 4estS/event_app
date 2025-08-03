@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    redirect_to login_path, alert: "Please log in" unless logged_in?
+    redirect_to sign_in_path, alert: "Please log in" unless logged_in?
   end
 end

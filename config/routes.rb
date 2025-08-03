@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "dashboard/show"
   root "pages#index"
 
   resource :guest_location, only: [ :new, :create, :destroy ]
@@ -10,12 +9,14 @@ Rails.application.routes.draw do
   resources :users, only: [ :new, :create, :show ]
 
   # Sign in / out
-  get  "sign_in",  to: "sessions#new"
-  post "sign_in",  to: "sessions#create"
-  delete "sign_out", to: "sessions#destroy"
+  get    "sign_in",  to: "sessions#new",     as: :sign_in
+  post   "sign_in",  to: "sessions#create"
+  delete "sign_out", to: "sessions#destroy", as: :sign_out
+
+  resources :users, only: [ :new, :create, :show ]
 
   # static Pages
-  get "dashboard", to: "dashboard#show"
+  get "/dashboard", to: "dashboard#show", as: :dashboard
   get "/home", to: "pages#home", as: :home
 
   # Event post routes

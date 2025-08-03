@@ -7,17 +7,14 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to @user, notice: "Welcome!"
+      redirect_to home_path, notice: "Welcome!"
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def show
-    @user = User.find(params[:id]) # raises ActiveRecord::RecordNotFound if missing
-    redirect_to home_path, notice: "Welcome!"
-    # Redirect to show if user not found
-    # redirect_to root_path, alert: "User not found" unless @user
+    @user = User.find(params[:id])
   end
 
   private
