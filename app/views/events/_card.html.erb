@@ -1,14 +1,10 @@
 <% @events.each do |event| %>
   <div class="card-event">
     <!-- Image -->
-    <% if event.image.attached? %>
     <div class="card-event__image-wrapper">
-      <%= image_tag url_for(event.image), class: "card-event__image max-w-full h-auto", alt: "Event image" %>
-      <span class="card-event__category">
-        Arts & Entertainment
-      </span>
+      <%= event_image(event) %>
+      <span class="card-event__category">Arts & Entertainment</span>
     </div>
-    <% end %>
     <!-- Title -->
     <h2 class="text-lg font-semibold">
       <%= link_to event.title, event_path(event), class: "hover:underline" %>
