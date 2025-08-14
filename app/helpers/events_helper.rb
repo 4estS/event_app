@@ -1,11 +1,9 @@
 module EventsHelper
   def event_image(event)
     alt_text = event.title.presence || event.slug.presence || "Event image"
+    image_classes = "card-event__image max-w-full h-auto"
+    src = event.image.attached? ? url_for(event.image) : "default-event.jpg"
 
-    if event.image.attached?
-      image_tag url_for(event.image), class: "cart-event_image max-w-full h-auto", alt: alt_text
-    else
-      image_tag "default-event.jpg", class: "card-event__image max-w-full h-auto", alt: alt_text
-    end
+    image_tag src, class: image_classes, alt: alt_text
   end
 end
