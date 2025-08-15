@@ -37,6 +37,19 @@ class Event < ApplicationRecord
     slug
   end
 
+  def display_image(size: :large)
+    return unless image.attached?
+
+    case size
+    when :large
+      image.variant(resize_to_fill: [ 1920, 1080 ]).processed
+    when :medium
+      image.variant(resize_to_fill: [ 960, 540 ]).processed
+    when :thumb
+      image.variant(resize_to_fill: [ 480, 270 ]).processed
+    end
+  end
+
   private
 
   def maximum_five_tags
