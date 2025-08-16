@@ -38,7 +38,11 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = current_user.events.order(starts_at: :asc)
+    @events = current_user.events.includes(:tags).order(starts_at: :asc)
+
+    if params[:tag_id].present?
+      @events = @events.joins(:tags).where(tags: { id: params[:tag_id] })
+    end
   end
   def show
     respond_to do |format|
@@ -55,7 +59,7 @@ class EventsController < ApplicationController
   private
   # app/controllers/events_controller.rb
   def set_event
-    @event = Event.find_by!(slug: params[:slug])
+    @event = Event.includes(:tags).find_by!(slug: params[:slug])
   end
 
   def event_params

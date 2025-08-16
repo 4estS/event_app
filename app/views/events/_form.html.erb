@@ -21,8 +21,8 @@
     
     <!-- 👇 Dropzone inner content -->
     <div data-image-upload-target="preview" class="w-full text-center">
-      <% if @event.image.attached? %>
-        <%= image_tag url_for(@event.image), class: "mx-auto max-h-48 w-auto rounded-lg shadow" %>
+      <% if @event.persisted? && @event.image.attached? %>
+        <%= image_tag @event.image.variant(resize_to_limit: [960, 540]), class: "mx-auto max-h-48 w-auto rounded-lg shadow" %>
       <% else %>
         <div class="space-y-1">
           <div class="mx-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-100">

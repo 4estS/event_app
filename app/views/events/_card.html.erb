@@ -1,9 +1,9 @@
 <% @events.each do |event| %>
-  <div class="card-event">
+  <div class="card-event" style="border-color:<%= event.category.color %>">
     <!-- Image -->
     <div class="card-event__image-wrapper">
       <%= event_image(event) %>
-      <span class="card-event__category">Arts & Entertainment</span>
+      <span class="card-event__category" style="background-color:<%= event.category.color %>">Arts & Entertainment</span>
     </div>
     <!-- Title -->
     <h2 class="text-lg font-semibold">
@@ -31,11 +31,14 @@
         <%= event.event_type&.humanize || "Unknown" %>
       </p>
       <!-- Tags -->
-      <div class="card-event__tags">
-        <span class="card-event__tag">#community</span>
-        <span class="card-event__tag">#volunteer</span>
-        <span class="card-event__tag">#animalrescue</span>
-        <span class="card-event__tag">#animalwelfare</span>
+      <div>
+        <% if event.tags.any? %>
+          <ul class="card-event__tags">
+            <% event.tags.each do |tag| %>
+              <li><%= tag_badge(tag) %></li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
       <!-- Actions -->
       <div class="card-event__actions">

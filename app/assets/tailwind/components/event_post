@@ -1,6 +1,10 @@
 /* Card styles for event posts */
 .card-event {
-  @apply max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden border border-[var(--color-alizarin-200)];
+  @apply max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden;
+  border-top-width: 1rem;  /* 16px */
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
 }
 
 .card-event__image-wrapper {
@@ -12,7 +16,7 @@
 }
 
 .card-event__category {
-  @apply absolute bottom-2 right-2 bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full;
+  @apply absolute bottom-2 right-2 text-gray-800 text-xs font-semibold px-3 py-1 rounded-full;
 }
 
 .card-event__content {

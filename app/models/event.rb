@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   belongs_to :category
 
   has_many :event_tags, dependent: :destroy
-  has_many :tags, through: :event_tags
+  has_many :tags, -> { order(:name) }, through: :event_tags
 
   has_one_attached :image
 
@@ -32,6 +32,8 @@ class Event < ApplicationRecord
   validate :image_size_within_limit
 
   before_validation :generate_slug, on: :create
+  # Process the image only after the blob is fully persisted and available
+  after_commit :normalize_image_to_1920x1080, on: [ :create, :update ]
 
   def to_param
     slug
@@ -81,6 +83,41 @@ class Event < ApplicationRecord
 
     if image.blob.byte_size > 2.megabytes
       errors.add(:image, "is too large. Maximum size is 2MB.")
+    end
+  end
+
+  def normalize_image_to_1920x1080
+    return unless image.attached?
+
+    # Only process when the image was just (re)attached
+    unless previous_changes.key?("image_attachment")
+      return
+    end
+
+    # Skip if already normalized (avoid reprocessing loop)
+    return if image.blob.metadata[:normalized] == true
+
+    require "image_processing/mini_magick"
+    require "mini_magick"
+
+    image.blob.open do |file|
+      mm = MiniMagick::Image.new(file.path)
+
+      # Don’t upscale small images; only crop/resize when larger than target
+      if mm.width >= 1920 && mm.height >= 1080
+        processed = ImageProcessing::MiniMagick
+                      .source(file)
+                      .resize_to_fill(1920, 1080, gravity: "Center")
+                      .call
+
+        # Attach the processed blob and mark it as normalized
+        image.attach(
+          io: File.open(processed.path),
+          filename: image.filename,
+          content_type: image.content_type,
+          metadata: image.blob.metadata.merge(normalized: true)
+        )
+      end
     end
   end
 end
