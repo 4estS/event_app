@@ -2,7 +2,8 @@ module EventsHelper
   EVENT_IMAGE_SIZES = {
     large:  [ 1920, 1080 ],
     medium: [ 960, 540 ],
-    thumb:  [ 480, 270 ]
+    thumb:  [ 480, 270 ],
+    dashboard:  [ 170, 96 ]
   }.freeze
 
   DEFAULT_IMAGES = {
@@ -16,21 +17,15 @@ module EventsHelper
     alt_text = event.title.presence || event.slug.presence || "Event image"
 
     if event.image.attached?
-      image_tag event.display_image(size: size),
-                alt: alt_text,
-                class: classes,
-                width: width,
-                height: height,
-                loading: "lazy",
-                decoding: "async"
-    else
-      image_tag DEFAULT_IMAGES.fetch(size, DEFAULT_IMAGES[:medium]),
-                alt: alt_text,
-                class: classes,
-                width: width,
-                height: height,
-                loading: "lazy",
-                decoding: "async"
+      variant = event.display_image(size: size) rescue nil
+      if variant.present?
+        return image_tag variant, alt: alt_text, class: classes, width: width, height: height,
+                        loading: "lazy", decoding: "async"
+      end
     end
+
+    image_tag DEFAULT_IMAGES.fetch(size, DEFAULT_IMAGES[:medium]),
+              alt: alt_text, class: classes, width: width, height: height,
+              loading: "lazy", decoding: "async"
   end
 end

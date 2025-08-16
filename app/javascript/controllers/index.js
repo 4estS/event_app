@@ -18,3 +18,6 @@ application.register("ticket-url", TicketUrlController)
 
 import ImageUploadController from "./image_upload_controller"
 application.register("image-upload", ImageUploadController)
+
+import DropdownController from "./dropdown_controller"
+application.register("dropdown", DropdownController)

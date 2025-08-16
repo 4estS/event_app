@@ -49,6 +49,8 @@ class Event < ApplicationRecord
       image.variant(resize_to_fill: [ 960, 540 ]).processed
     when :thumb
       image.variant(resize_to_fill: [ 480, 270 ]).processed
+    when :dashboard
+      image.variant(resize_to_fill: [ 170, 96 ]).processed
     end
   end
 

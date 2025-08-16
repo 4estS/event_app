@@ -1,31 +1,56 @@
 <%= turbo_frame_tag dom_id(event) do %>
-  <div class="relative rounded-xl border shadow-sm overflow-hidden bg-white border-l-[16px] hover:bg-gray-50" style="border-color: <%= event.category.color %>;">
-    
-    <!-- Actions in top-right, outside the link -->
-    <div class="absolute top-4 right-4 flex space-x-4 z-10" data-turbo="false">
-      <%= link_to "Edit", edit_event_path(event),
-            class: "text-blue-600 hover:underline font-medium text-sm" %>
+  <div class="relative rounded-xl border shadow-sm bg-white border-l-[16px] hover:bg-gray-50" style="border-color: <%= event.category.color %>;">
+    <div class="flex items-center gap-3">
 
-      <%= button_to "Delete", event_path(event),
-            method: :delete,
-            data: { turbo_confirm: "Are you sure?" },
-            form: { class: "inline" },
-            class: "text-red-600 hover:underline font-medium text-sm bg-transparent border-none p-0" %>
-    </div>
+      <!-- Thumbnail (48px) via helper -->
+      <div class="shrink-0">
+        <%= event_image(event,
+              size: :dashboard,
+              classes: "object-cover bg-gray-100") %>
+      </div>
 
-    <!-- Linkable content area -->
-    <%= link_to edit_event_path(event), class: "block p-4" do %>
-      <h2 class="text-xl font-bold text-gray-900 group-hover:underline">
-        <%= event.title %>
-      </h2>
-      <% if event.starts_at.present? %>
-        <p class="text-sm text-gray-600 mt-1">
-          <%= l(event.starts_at.to_date) %> | <%= l(event.starts_at, format: :short) %>
-        </p>
-      <% else %>
-        <p class="text-sm text-gray-400 italic mt-1">TBD</p>
+      <!-- Linkable middle content -->
+      <%= link_to edit_event_path(event), class: "min-w-0 flex-1" do %>
+        <h2 class="text-base sm:text-lg font-semibold text-gray-900 truncate">
+          <%= event.title %>
+        </h2>
+
+        <% if event.starts_at.present? %>
+          <p class="text-xs sm:text-sm text-gray-600 truncate">
+            <%= l(event.starts_at.to_date) %> • <%= l(event.starts_at, format: :short) %>
+          </p>
+        <% else %>
+          <p class="text-xs sm:text-sm text-gray-400 italic">TBD</p>
+        <% end %>
       <% end %>
-    <% end %>
 
+      <!-- Three-dot actions menu -->
+      <div class="relative shrink-0" data-controller="dropdown">
+        <button type="button"
+                class="p-2 rounded-full hover:bg-gray-100"
+                aria-label="Actions"
+                aria-haspopup="menu"
+                data-action="click->dropdown#toggle">
+          ⋯
+        </button>
+
+        <div class="absolute right-0 mt-2 w-40 rounded-md border bg-white shadow-lg hidden z-50"
+             role="menu"
+             data-dropdown-target="menu"
+             data-action="click@window->dropdown#close keydown@window->dropdown#escape">
+          <%= link_to "Edit",
+                      edit_event_path(event),
+                      class: "block px-3 py-2 text-sm hover:bg-gray-50",
+                      data: { turbo: "false" } %>
+
+          <%= button_to "Delete",
+                        event_path(event),
+                        method: :delete,
+                        data: { turbo_confirm: "Are you sure?" },
+                        form: { class: "block" },
+                        class: "w-full text-left block px-3 py-2 text-sm text-red-600 hover:bg-red-50 bg-transparent border-none p-0" %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
