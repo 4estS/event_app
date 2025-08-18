@@ -1,0 +1,7 @@
+<h1 class="text-2xl font-bold mb-4">Events tagged with "<%= @tag.name %>"</h1>
+
+<% if @events.any? %>
+  <%= render partial: "events/card", collection: @events, as: :event %>
+<% else %>
+  <p class="text-gray-500">No events found for this tag.</p>
+<% end %>

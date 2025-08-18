@@ -4,17 +4,18 @@ class UserLoginsTest < ApplicationSystemTestCase
   fixtures :users
 
   def setup
-    @user = users(:one) # Assuming you have a fixture named :one
+    @user = users(:one)
   end
+
   test "user can log in and log out" do
-    visit login_path
-    fill_in "Email", with: @user.email
-    fill_in "Password", with: "password"
-    click_on "Log in"
+    sign_in_as(@user)
 
-    assert_text "Users#show"
+    # (optional) verify we landed on an allowed page happens inside sign_in_as
 
-    # click_on "Log out"
-    # assert_text "Sign In"
+    # Log out — rack_test can't click data-method="delete" links
+    page.driver.submit :delete, sign_out_path, {}
+
+    # Adjust if your SessionsController redirects elsewhere after logout
+    assert_current_path root_path
   end
 end

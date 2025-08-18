@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# test/fixtures/events.yml
+one:
+  user: one
+  category: one
+  title: "Fixture Event One"
+  description: "A sample event."
+  starts_on: 2025-09-01
+  starts_at: "10:00"
+  ends_at: "12:00"
+  event_type: 0        # free
+  status: 0            # draft
+  slug: "fixture-event-one"  # fixtures bypass callbacks, so set slug explicitly
+
+two:
+  user: one
+  category: one
+  title: "Fixture Event Two"
+  description: "Another sample."
+  starts_on: 2025-09-02
+  starts_at: "18:00"
+  ends_at: "20:00"
+  event_type: 2        # ticket_required
+  status: 2            # published
+  slug: "fixture-event-two"
+

@@ -24,7 +24,14 @@
       <h1 class="font-bold text-4xl">Pages#home</h1>
       <p>Find me in app/views/pages/home.html.erb</p>
       <div class=" flex flex-col gap-y-8">
-      <%= render "events/card" %>
+        
+        <%= turbo_frame_tag :events do %>
+          <% if @events.any? %>
+            <%= render partial: "events/card", collection: @events, as: :event %>
+          <% else %>
+            <p class="text-gray-500">No events yet.</p>
+          <% end %>
+        <% end %>
       </div>
     </main>
     <!-- Right Column: Trending/Info -->
