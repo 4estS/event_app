@@ -4,8 +4,32 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
 
+  private
+
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    # Return memoized value if we’ve computed it
+    return @current_user if defined?(@current_user)
+
+    # 1) Prefer the session (standard login)
+    if (uid = session[:user_id])
+      @current_user = User.find_by(id: uid)
+      return @current_user
+    end
+
+    # 2) Fallback: Remember-me cookies
+    uid   = cookies.signed[:user_id]
+    token = cookies[:remember_token]
+    if uid && token
+      user = User.find_by(id: uid)
+      if user && user.remembered?(token) && !user.remember_expired?(ttl: 30.days)
+        # Re-hydrate the session for subsequent requests
+        session[:user_id] = user.id
+        @current_user = user
+        return @current_user
+      end
+    end
+
+    @current_user = nil
   end
 
   def logged_in?

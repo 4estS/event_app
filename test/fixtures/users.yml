@@ -2,8 +2,8 @@
 
 one:
   email: user_one@example.com
-  password_digest: <%= BCrypt::Password.create('password') %>
+  password_digest: <%= BCrypt::Password.create("correctpass", cost: BCrypt::Engine::MIN_COST) %>
 
 two:
   email: user_two@example.com
-  password_digest: <%= BCrypt::Password.create('password') %>
+  password_digest: <%= BCrypt::Password.create("anotherpass", cost: BCrypt::Engine::MIN_COST) %>
